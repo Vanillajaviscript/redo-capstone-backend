@@ -8,7 +8,7 @@ import colors from "colors";
 import connectDB from "./config/connection.js";
 const PORT = process.env.PORT || 3001;
 const app = express();
-
+import dogRouter from "./routes/dogRouter.js";
 
 ////////////
 //Middleware
@@ -19,7 +19,7 @@ app.use(express.urlencoded({limit: "30mb", extended: true}));
 app.use(cors());
 //endpoint ex. /users/signup
 app.use("/users", userRouter); 
-
+app.use("/dog", dogRouter);
 
 
 ////////////////////////

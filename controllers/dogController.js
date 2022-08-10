@@ -1,5 +1,5 @@
 import express from "express";
-import DogModal from "../models/dogSchema";
+import DogModal from "../models/dogSchema.js";
 
 export const createDog = async (req, res) => {
   const dog = req.body;
