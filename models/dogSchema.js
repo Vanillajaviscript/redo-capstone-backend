@@ -5,6 +5,7 @@ const dogSchema = mongoose.Schema({
   description: String,
   tags: [String],
   imageFile: String,
+  creator: String,
   createdAt: {
     type: Date,
     default: new Date(),
