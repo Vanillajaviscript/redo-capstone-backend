@@ -2,6 +2,7 @@ import 'dotenv/config';
 import express from "express";
 import cors from "cors";
 import logger from "morgan"
+import userRouter from "./routes/userRouter.js";
 import dotenv from "dotenv";
 import colors from "colors";
 import connectDB from "./config/connection.js";
@@ -16,12 +17,10 @@ app.use(logger('dev'));
 app.use(express.json({limit: "30mb", extended: true}));
 app.use(express.urlencoded({limit: "30mb", extended: true}));
 app.use(cors());
+//endpoint ex. /users/signup
+app.use("/users", userRouter); 
 
 
-
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
 
 ////////////////////////
 // Server Listener
