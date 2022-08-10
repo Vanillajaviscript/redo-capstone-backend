@@ -24,6 +24,17 @@ export const getDogs = async (req, res) => {
     res.status(200).json(dogs);
 
   } catch (error) {
-    res.status(404).json({ message: "Something went wrong" });
+    res.status(404).json({ message: "Bad Request!" });
+  }
+};
+
+export const getDog = async (req, res) => {
+ const {id} = req.params;
+  try {
+    const dog = await DogModal.findById(id);
+    res.status(200).json(dog);
+
+  } catch (error) {
+    res.status(404).json({ message: "Bad Request!" });
   }
 };
