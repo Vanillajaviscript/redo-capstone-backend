@@ -9,6 +9,7 @@ import connectDB from "./config/connection.js";
 const PORT = process.env.PORT || 3001;
 const app = express();
 import dogRouter from "./routes/dogRouter.js";
+dotenv.config();
 
 ////////////
 //Middleware
@@ -20,7 +21,9 @@ app.use(cors());
 //endpoint ex. /users/signup
 app.use("/users", userRouter); 
 app.use("/dog", dogRouter);
-
+app.get("/", (req, res) => {
+  res.send("Dog rescue adoptions")
+})
 
 ////////////////////////
 // Server Listener
