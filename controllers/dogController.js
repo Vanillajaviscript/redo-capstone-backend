@@ -63,7 +63,7 @@ export const deleteDog = async (req, res) => {
   }
 };
 
-export const updateDog = async () => {
+export const updateDog = async (req, res) => {
   const {id} = req.params;
   const {dogName, description, creator, imageFile, tags} = req.body;
   try {
