@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const dogSchema = mongoose.Schema({
   name: String,
-  title: String,
+  dogName: String,
   description: String,
   tags: [String],
   imageFile: String,
