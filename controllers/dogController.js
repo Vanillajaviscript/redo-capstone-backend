@@ -50,7 +50,7 @@ export const getDogsByUser = async (req, res) => {
   res.status(200).json(userDogs);
 };
 
-export const deleteDog = async () => {
+export const deleteDog = async (req, res) => {
   const {id} = req.params;
   try {
   if(!mongoose.Types.ObjectId.isValid(id)) {
