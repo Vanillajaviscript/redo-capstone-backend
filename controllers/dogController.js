@@ -51,7 +51,7 @@ export const getDogsByUser = async (req, res) => {
 };
 
 export const deleteDog = async () => {
-  const {} = req.params;
+  const {id} = req.params;
   try {
   if(!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(404).json({message: "No dogs exist"});
@@ -63,4 +63,25 @@ export const deleteDog = async () => {
   }
 };
 
+export const updateDog = async () => {
+  const {id} = req.params;
+  const {dogName, description, creator, imageFile, tags} = req.body;
+  try {
+  if(!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({message: "No dogs exist"});
+  }; 
+  const updatedDog = {
+    creator,
+    dogName,
+    description,
+    tags,
+    imageFile,
+    _id: id
+  }
+  await DogModal.findByIdAndUpdate(id, updateDog, {new: true});
+  res.json({message: "Dog has been updated successfully"});
+  } catch(error) {
+    res.status(404).json({message: "Error has occurred"});
+  }
+};
 
