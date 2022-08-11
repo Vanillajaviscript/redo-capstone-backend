@@ -64,24 +64,26 @@ export const deleteDog = async (req, res) => {
 };
 
 export const updateDog = async (req, res) => {
-  const {id} = req.params;
-  const {dogName, description, creator, imageFile, tags} = req.body;
+  const { id } = req.params;
+  const { dogName, description, creator, imageFile, tags } = req.body;
   try {
-  if(!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({message: "No dogs exist"});
-  }; 
-  const updatedDog = {
-    creator,
-    dogName,
-    description,
-    tags,
-    imageFile,
-    _id: id
-  }
-  await DogModal.findByIdAndUpdate(id, updateDog, {new: true});
-  res.json({message: "Dog has been updated successfully"});
-  } catch(error) {
-    res.status(404).json({message: "Error has occurred"});
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(404).json({ message: `No dogs exist with this id: ${id}` });
+    }
+
+    const updatedDog = {
+      creator,
+      dogName,
+      description,
+      tags,
+      imageFile,
+      _id: id,
+    };
+    await DogModal.findByIdAndUpdate(id, updatedDog, { new: true });
+    res.json(updatedDog);
+  } catch (error) {
+    res.status(404).json({ message: "Bad Request!" });
   }
 };
+
 
