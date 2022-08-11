@@ -86,4 +86,15 @@ export const updateDog = async (req, res) => {
   }
 };
 
+export const getDogsBySearch = async (req, res) => {
+  const {searchQuery} = req.query;
+  try {
+    const dogName = new RegExp(searchQuery, "i");
+    const dogs = await DogModal.find({dogName});
+    res.json(dogs);
+  } catch (error) {
+    res.status(404).json({message: "Bad Request!"})
+  };
+};
+
 
