@@ -49,3 +49,18 @@ export const getDogsByUser = async (req, res) => {
   const userDogs = await DogModal.find({creator: id});
   res.status(200).json(userDogs);
 };
+
+export const deleteDog = async () => {
+  const {} = req.params;
+  try {
+  if(!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({message: "No dogs exist"});
+  }; 
+  await DogModal.findByIdAndRemove(id);
+  res.json({message: "Dog has been deleted successfully"});
+  } catch(error) {
+    res.status(404).json({message: "Error has occurred"});
+  }
+};
+
+
