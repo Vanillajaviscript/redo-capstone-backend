@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 
 const dogSchema = mongoose.Schema({
-  name: String,
   dogName: String,
   description: String,
   tags: [String],
@@ -10,10 +9,6 @@ const dogSchema = mongoose.Schema({
   createdAt: {
     type: Date,
     default: new Date(),
-  },
-  likeCount: {
-    type: Number,
-    default: 0
   },
 });
 const DogModal = mongoose.model("Dog", dogSchema);
