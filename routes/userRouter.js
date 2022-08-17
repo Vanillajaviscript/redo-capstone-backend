@@ -4,6 +4,6 @@ import { signup, signin, googleSignIn } from "../controllers/userController.js";
 
 router.post("/signup", signup);
 router.post("/signin", signin)
-router.post("/googlesignin", googleSignIn)
+router.post("/googleSignIn", googleSignIn);
 
 export default router;

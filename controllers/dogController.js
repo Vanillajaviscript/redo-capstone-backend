@@ -19,9 +19,11 @@ export const createDog = async (req, res) => {
 };
 
 export const getDogs = async (req, res) => {
- 
+  const {page} = req.query;
   try {
-    const dogs = await DogModal.find();
+    // const dogs = await DogModal.find();
+    const dogs = DogModal;
+    res.json(await DogModal.find({}).reverse())
     res.status(200).json(dogs);
 
   } catch (error) {
