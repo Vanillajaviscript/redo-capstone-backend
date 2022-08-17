@@ -7,11 +7,19 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 import serverMiddleware from './middleware/server.js';
 dotenv.config();
+import logger from "morgan"
 
 ////////////
 //Middleware
 ////////////
-serverMiddleware();
+const middleware = async () => {
+  try {
+    serverMiddleware();
+  } catch(error) {
+    console.log(`Catch error: ${error}`)
+  }
+};
+middleware();
 
 //Root Directory
 app.get("/", (req, res) => {
@@ -31,5 +39,4 @@ const start = async () => {
     console.log(`Catch error: ${error}`)
   }
 };
-
 start();
