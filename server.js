@@ -7,7 +7,6 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 import serverMiddleware from './middleware/server.js';
 dotenv.config();
-import logger from "morgan"
 
 ////////////
 //Middleware
